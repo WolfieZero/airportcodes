@@ -11,10 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+/*
+|--------------------------------------------------------------------------
+| Public
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+
+Route::get('airport/{iata}', 'AirportController@show')->name('airport');
+Route::get('airport/search/{term}', 'AirportController@search')->name('airport.search');
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin
+|--------------------------------------------------------------------------
+ */
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
